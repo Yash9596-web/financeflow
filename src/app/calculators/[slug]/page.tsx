@@ -3,6 +3,8 @@ import CalculatorLayout from '@/components/CalculatorLayout';
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
 
+export const runtime = 'edge';
+
 export function generateStaticParams() {
   // Only generate params for calculators that don't have their own dedicated folder.
   // Next.js will automatically route dedicated folders first.

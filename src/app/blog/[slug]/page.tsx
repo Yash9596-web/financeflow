@@ -5,6 +5,8 @@ import { blogPosts } from '@/data/blogPosts';
 import { getFeaturedCalculators } from '@/data/calculators';
 import styles from '../blog.module.css';
 
+export const runtime = 'edge';
+
 type Props = {
   params: Promise<{ slug: string }>;
 };
