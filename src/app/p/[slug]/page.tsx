@@ -4,6 +4,7 @@ import SIPClient from '@/app/calculators/sip-calculator/SIPClient';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
+export const runtime = 'edge';
 // Mock database of programmatic pages
 // In a real scenario, this would come from a Headless CMS or Database
 const programmaticPages: Record<string, { title: string, desc: string, type: string, modifier: string }> = {
@@ -27,9 +28,7 @@ const programmaticPages: Record<string, { title: string, desc: string, type: str
   }
 };
 
-export function generateStaticParams() {
-  return Object.keys(programmaticPages).map(slug => ({ slug }));
-}
+
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const resolvedParams = await params;
