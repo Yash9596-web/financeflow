@@ -889,6 +889,8 @@ export default function AIAdvisorClient() {
           font-size: 0.93rem;
           line-height: 1.65;
           word-break: break-word;
+          min-width: 0; /* Critical for flex items to prevent overflow */
+          overflow-x: auto; /* Allow scrolling for wide tables/code */
         }
 
         /* User Bubble - styled pill bubble on the right */
@@ -1071,7 +1073,7 @@ export default function AIAdvisorClient() {
           }
         }
 
-        @media (max-width: 480px) {
+        @media (max-width: 640px) {
           .dashboard-container {
             height: calc(100vh - var(--nav-height) - 1rem);
             margin-top: 0.5rem;
