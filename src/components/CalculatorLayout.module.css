@@ -1,0 +1,128 @@
+.page {
+  padding-bottom: var(--space-3xl);
+}
+
+/* Breadcrumb */
+.breadcrumb {
+  padding: var(--space-md) 0;
+  font-size: var(--fs-sm);
+  color: var(--text-muted);
+}
+
+.breadcrumb a {
+  color: var(--text-muted);
+  transition: color var(--transition-fast);
+}
+
+.breadcrumb a:hover { color: var(--primary); }
+
+.breadSep {
+  margin: 0 var(--space-sm);
+  color: var(--text-light);
+}
+
+.breadCurrent {
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+/* Hero */
+.hero {
+  text-align: center;
+  padding: var(--space-2xl) 0 var(--space-xl);
+}
+
+.heroIcon {
+  font-size: 3rem;
+  display: block;
+  margin-bottom: var(--space-md);
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.heroTitle {
+  font-size: var(--fs-4xl);
+  font-weight: 800;
+  margin-bottom: var(--space-md);
+  background: var(--primary-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.heroDesc {
+  font-size: var(--fs-lg);
+  color: var(--text-muted);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Calculator Section */
+.calcSection {
+  padding: var(--space-xl) 0 var(--space-2xl);
+}
+
+/* Formula Section */
+.formulaSection {
+  background: var(--bg-secondary);
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+}
+
+/* Related */
+.relatedSection {
+  background: var(--bg-secondary);
+}
+
+.relatedGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-lg);
+}
+
+.relatedCard {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-xl);
+  padding: var(--space-xl);
+  text-align: center;
+  transition: all var(--transition-base);
+}
+
+.relatedCard:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--primary);
+}
+
+.relatedIcon {
+  font-size: 2rem;
+  display: block;
+  margin-bottom: var(--space-sm);
+}
+
+.relatedCard h3 {
+  font-size: var(--fs-base);
+  font-weight: 700;
+  margin-bottom: var(--space-xs);
+}
+
+.relatedCard p {
+  font-size: var(--fs-xs);
+  color: var(--text-muted);
+  line-height: var(--lh-normal);
+}
+
+@media (max-width: 1024px) {
+  .relatedGrid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 640px) {
+  .relatedGrid { grid-template-columns: 1fr; }
+  .heroTitle { font-size: var(--fs-2xl); }
+  .heroDesc { font-size: var(--fs-base); }
+}

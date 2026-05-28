@@ -1,0 +1,125 @@
+.footer {
+  background: var(--bg-secondary);
+  border-top: 1px solid var(--border-color);
+  padding: var(--space-4xl) 0 var(--space-xl);
+  margin-top: auto;
+}
+
+.footerGrid {
+  display: grid;
+  grid-template-columns: 1.5fr repeat(3, 1fr);
+  gap: var(--space-3xl);
+}
+
+.footerBrand { max-width: 320px; }
+
+.footerLogo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  font-size: var(--fs-xl);
+  font-weight: 800;
+  margin-bottom: var(--space-md);
+}
+
+.logoIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: var(--primary-gradient);
+  color: white;
+  border-radius: var(--radius-md);
+  font-size: var(--fs-lg);
+}
+
+.logoText { color: var(--text-primary); }
+.logoAccent { color: var(--primary); }
+
+.footerDesc {
+  font-size: var(--fs-sm);
+  color: var(--text-muted);
+  line-height: var(--lh-relaxed);
+  margin-bottom: var(--space-lg);
+}
+
+.trustBadges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+}
+
+.badge {
+  font-size: var(--fs-xs);
+  padding: 4px 10px;
+  background: var(--primary-glow);
+  color: var(--primary);
+  border-radius: var(--radius-full);
+  font-weight: 600;
+}
+
+.footerCol {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.footerTitle {
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: var(--space-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.footerLink {
+  font-size: var(--fs-sm);
+  color: var(--text-muted);
+  transition: color var(--transition-fast);
+  padding: 3px 0;
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.footerLink:hover { color: var(--primary); }
+
+.footerLinkAccent {
+  font-size: var(--fs-sm);
+  color: var(--primary);
+  font-weight: 600;
+  margin-top: var(--space-sm);
+}
+
+.footerBottom {
+  margin-top: var(--space-3xl);
+  padding-top: var(--space-xl);
+  border-top: 1px solid var(--border-color);
+  text-align: center;
+}
+
+.footerBottom p {
+  font-size: var(--fs-xs);
+  color: var(--text-muted);
+}
+
+.footerDisclaimer {
+  margin-top: var(--space-sm);
+  font-size: var(--fs-xs);
+  color: var(--text-light);
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (max-width: 1024px) {
+  .footerGrid { grid-template-columns: repeat(2, 1fr); }
+  .footerBrand { max-width: none; }
+}
+
+@media (max-width: 640px) {
+  .footerGrid { grid-template-columns: 1fr; gap: var(--space-xl); }
+  .footer { padding: var(--space-2xl) 0 var(--space-lg); }
+}
