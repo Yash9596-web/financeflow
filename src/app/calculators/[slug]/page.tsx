@@ -5,13 +5,6 @@ import { Metadata } from 'next';
 
 export const runtime = 'edge';
 
-export function generateStaticParams() {
-  // Only generate params for calculators that don't have their own dedicated folder.
-  // Next.js will automatically route dedicated folders first.
-  return calculators.map((calc) => ({
-    slug: calc.slug,
-  }));
-}
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const resolvedParams = await params;
