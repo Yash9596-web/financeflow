@@ -2,8 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 
 export const runtime = 'edge';
 
-const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
-const GROQ_API_KEY = process.env.GROQ_API_KEY;
+
 
 const SYSTEM_PROMPT = `You are "FinanceFlow AI", a friendly, expert Indian financial advisor built into the FinanceFlow platform.
 
@@ -49,7 +48,7 @@ const GEMINI_MODELS = [
 ];
 
 // Call Groq API (Primary Ultra-Fast AI)
-async function callGroq(messages: ChatMessage[]): Promise<Response> {
+async function callGroq(messages: ChatMessage[], groqKey: string): Promise<Response> {
   const url = 'https://api.groq.com/openai/v1/chat/completions';
   
   const payload = {
@@ -65,7 +64,7 @@ async function callGroq(messages: ChatMessage[]): Promise<Response> {
   return fetch(url, {
     method: 'POST',
     headers: {
-      'Authorization': `Bearer ${GROQ_API_KEY}`,
+      'Authorization': `Bearer ${groqKey}`,
       'Content-Type': 'application/json',
     },
     body: JSON.stringify(payload),
@@ -73,9 +72,9 @@ async function callGroq(messages: ChatMessage[]): Promise<Response> {
 }
 
 // Call Gemini API (Robust Fallback Chain)
-async function callGemini(contents: object[], modelIndex = 0, retryCount = 0): Promise<Response> {
+async function callGemini(contents: object[], geminiKey: string, modelIndex = 0, retryCount = 0): Promise<Response> {
   const model = GEMINI_MODELS[modelIndex] || GEMINI_MODELS[0];
-  const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${GEMINI_API_KEY}`;
+  const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${geminiKey}`;
 
   const generationConfig: any = {
     temperature: 0.7,
@@ -105,12 +104,12 @@ async function callGemini(contents: object[], modelIndex = 0, retryCount = 0): P
   if (response.status === 429) {
     // Try next model first
     if (modelIndex + 1 < GEMINI_MODELS.length) {
-      return callGemini(contents, modelIndex + 1, 0);
+      return callGemini(contents, geminiKey, modelIndex + 1, 0);
     }
     // If all models exhausted, retry with delay (up to 2 retries)
     if (retryCount < 2) {
       await new Promise(resolve => setTimeout(resolve, (retryCount + 1) * 5000));
-      return callGemini(contents, 0, retryCount + 1);
+      return callGemini(contents, geminiKey, 0, retryCount + 1);
     }
   }
 
@@ -122,15 +121,19 @@ export async function POST(req: NextRequest) {
     const body = await req.json();
     const messages: ChatMessage[] = body.messages || [];
 
+    // Dynamically retrieve keys inside the handler for Edge compatibility
+    const geminiApiKey = process.env.GEMINI_API_KEY;
+    const groqApiKey = process.env.GROQ_API_KEY;
+
     if (!messages.length) {
       return NextResponse.json({ error: 'No messages provided' }, { status: 400 });
     }
 
     // 1. Try Groq (Primary Ultra-Fast Option)
-    if (GROQ_API_KEY) {
+    if (groqApiKey) {
       try {
         console.log('Routing chat request to Groq (Llama 3.3)...');
-        const groqResponse = await callGroq(messages);
+        const groqResponse = await callGroq(messages, groqApiKey);
         
         if (groqResponse.ok) {
           const data = await groqResponse.json();
@@ -150,7 +153,7 @@ export async function POST(req: NextRequest) {
     }
 
     // 2. Try Gemini (Robust Fallback / Secondary Option)
-    if (!GEMINI_API_KEY) {
+    if (!geminiApiKey) {
       return NextResponse.json({ error: 'AI advisor keys not configured. Please check your .env.local file.' }, { status: 500 });
     }
 
@@ -164,7 +167,7 @@ export async function POST(req: NextRequest) {
       });
     }
 
-    const response = await callGemini(contents);
+    const response = await callGemini(contents, geminiApiKey);
 
     if (!response.ok) {
       const errorData = await response.text();
