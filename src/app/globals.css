@@ -547,3 +547,31 @@ h1, h2, h3, h4, h5, h6 { line-height: var(--lh-tight); font-weight: 700; color: 
   clip: rect(0, 0, 0, 0);
   border: 0;
 }
+
+/* ===== ENHANCED MOBILE RESPONSIVE ===== */
+@media (max-width: 480px) {
+  :root {
+    --space-4xl: 3rem;
+    --space-3xl: 2.5rem;
+    --space-2xl: 1.75rem;
+    --nav-height: 60px;
+  }
+
+  body { font-size: 0.9375rem; }
+
+  .container { padding: 0 var(--space-sm); }
+
+  .section { padding: var(--space-xl) 0; }
+
+  .section-header h2 { font-size: var(--fs-2xl); }
+  .section-header p { font-size: var(--fs-sm); }
+
+  .btn { padding: 0.625rem 1.25rem; font-size: var(--fs-xs); }
+  .btn-lg { padding: 0.75rem 1.5rem; font-size: var(--fs-sm); }
+
+  h1 { font-size: var(--fs-3xl); }
+  h2 { font-size: var(--fs-2xl); }
+  h3 { font-size: var(--fs-xl); }
+}
+
+}

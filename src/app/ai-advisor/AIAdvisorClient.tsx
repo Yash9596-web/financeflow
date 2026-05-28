@@ -1001,7 +1001,18 @@ export default function AIAdvisorClient() {
         }
 
         /* ===== RESPONSIVENESS AND DRAWERS ===== */
+        @media (max-width: 1024px) {
+          .suggestions-dashboard-grid {
+            grid-template-columns: repeat(2, 1fr);
+          }
+        }
+
         @media (max-width: 860px) {
+          .dashboard-container {
+            height: calc(100vh - var(--nav-height) - 2rem);
+            border-radius: var(--radius-md);
+          }
+
           .advisor-sidebar {
             position: absolute;
             left: 0;
@@ -1019,6 +1030,126 @@ export default function AIAdvisorClient() {
 
           .suggestions-dashboard-grid {
             grid-template-columns: 1fr;
+          }
+          
+          .workspace-header {
+            padding: 0 0.75rem;
+          }
+          
+          .chat-viewport {
+            padding: 1rem;
+          }
+          
+          .input-panel-container {
+            padding: 0.75rem;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .dashboard-container {
+            height: calc(100vh - var(--nav-height) - 1rem);
+            margin-top: 0.5rem;
+            border-radius: var(--radius-sm);
+            border: none;
+          }
+
+          .workspace-header {
+            height: 50px;
+            padding: 0 0.5rem;
+          }
+          
+          .workspace-header h3 {
+            font-size: 0.85rem !important;
+          }
+          
+          .workspace-header p {
+            font-size: 0.65rem !important;
+          }
+
+          .routing-badge {
+            font-size: 0.6rem;
+            padding: 3px 6px;
+          }
+
+          .chat-viewport {
+            padding: 0.75rem;
+          }
+
+          .splash-viewport {
+            padding: 1rem 0;
+          }
+
+          .glowing-ai-orb {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 1rem;
+          }
+
+          .wealth-greeting {
+            font-size: 1.5rem;
+          }
+
+          .wealth-subtitle {
+            font-size: 0.82rem;
+            margin-bottom: 1.25rem;
+          }
+
+          .suggestion-glass-card {
+            padding: 0.875rem;
+          }
+
+          .suggestion-glass-card h4 {
+            font-size: 0.82rem;
+          }
+
+          .suggestion-glass-card p {
+            font-size: 0.72rem;
+          }
+
+          .message-bubble {
+            font-size: 0.85rem;
+            line-height: 1.55;
+          }
+
+          .user-bubble {
+            max-width: 90%;
+            padding: 0.625rem 1rem;
+          }
+
+          .input-panel-container {
+            padding: 0.5rem;
+          }
+
+          .chat-input-pill {
+            padding: 3px 4px 3px 12px;
+          }
+
+          .chat-pill-input {
+            font-size: 0.85rem;
+            padding: 0.625rem 0;
+          }
+
+          .chat-pill-send-btn {
+            width: 34px;
+            height: 34px;
+            font-size: 0.875rem;
+          }
+
+          .chat-input-decoration {
+            font-size: 1rem;
+            margin-right: 6px;
+          }
+
+          .disclaimer-text {
+            font-size: 0.6rem;
+          }
+
+          .advisor-sidebar.open {
+            width: 220px;
+          }
+
+          .sidebar-footer {
+            display: none;
           }
         }
       `}</style>

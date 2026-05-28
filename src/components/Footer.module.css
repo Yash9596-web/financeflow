@@ -123,3 +123,15 @@
   .footerGrid { grid-template-columns: 1fr; gap: var(--space-xl); }
   .footer { padding: var(--space-2xl) 0 var(--space-lg); }
 }
+
+@media (max-width: 480px) {
+  .footer { padding: var(--space-xl) 0 var(--space-md); }
+  .footerLogo { font-size: var(--fs-lg); }
+  .footerDesc { font-size: var(--fs-xs); }
+  .trustBadges { gap: var(--space-xs); }
+  .badge { font-size: 0.65rem; padding: 3px 8px; }
+  .footerTitle { font-size: var(--fs-xs); }
+  .footerLink { font-size: var(--fs-xs); }
+  .footerBottom p { font-size: 0.65rem; }
+  .footerDisclaimer { font-size: 0.6rem; }
+}

@@ -370,3 +370,31 @@
   .hamburger { display: flex; }
   .megaMenu { min-width: auto; left: 0; transform: none; }
 }
+
+@media (max-width: 480px) {
+  .nav { height: 60px; }
+  .logo { font-size: var(--fs-lg); }
+  .logoIcon { width: 30px; height: 30px; font-size: var(--fs-base); }
+  .navActions { gap: var(--space-xs); }
+  .actionBtn { width: 34px; height: 34px; font-size: 0.95rem; }
+  .hamburger { width: 34px; height: 34px; }
+  .hamburgerLine { width: 18px; }
+  .mobileMenu { width: min(280px, 90vw); padding: var(--space-lg); }
+  .mobileLink { padding: 0.625rem var(--space-md); }
+  .searchInner { padding: 0 var(--space-sm); }
+  .searchInput { font-size: var(--fs-sm); }
+}
+
+@media (max-width: 480px) {
+  .nav { height: 60px; }
+  .logo { font-size: var(--fs-lg); }
+  .logoIcon { width: 30px; height: 30px; font-size: var(--fs-base); }
+  .navActions { gap: var(--space-xs); }
+  .actionBtn { width: 34px; height: 34px; font-size: 0.95rem; }
+  .hamburger { width: 34px; height: 34px; }
+  .hamburgerLine { width: 18px; }
+  .mobileMenu { width: min(280px, 90vw); padding: var(--space-lg); }
+  .mobileLink { padding: 0.625rem var(--space-md); }
+  .searchInner { padding: 0 var(--space-sm); }
+  .searchInput { font-size: var(--fs-sm); }
+}

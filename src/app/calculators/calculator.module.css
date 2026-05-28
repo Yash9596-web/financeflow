@@ -366,4 +366,29 @@
   .resultCards { grid-template-columns: 1fr; }
   .resultValue { font-size: var(--fs-2xl); }
   .chartHeader { flex-direction: column; gap: var(--space-md); align-items: flex-start; }
+  .inputPanel { padding: var(--space-lg); }
+  .resultPanel { padding: var(--space-lg); }
+  .chartSection { padding: var(--space-lg); }
+  .tableSection { padding: var(--space-lg); }
+  .formulaCard { padding: var(--space-lg); }
+  .formulaExample { padding: var(--space-lg); }
+  .formula { font-size: var(--fs-base); padding: var(--space-md); word-break: break-all; }
+}
+
+@media (max-width: 480px) {
+  .inputPanel { padding: var(--space-md); }
+  .resultPanel { padding: var(--space-md); }
+  .panelTitle { font-size: var(--fs-base); margin-bottom: var(--space-md); }
+  .resultHighlight { padding: var(--space-md); }
+  .resultValue { font-size: var(--fs-xl); }
+  .resultLabel { font-size: var(--fs-xs); }
+  .chartSection { padding: var(--space-md); }
+  .tableSection { padding: var(--space-md); }
+  .formulaBlock h2 { font-size: var(--fs-xl); }
+  .formula { font-size: var(--fs-sm); }
+  .toggleBtn { padding: 5px 10px; font-size: 0.65rem; }
+  .amortTable th, .amortTable td { padding: var(--space-xs) var(--space-sm); font-size: var(--fs-xs); }
+  .table th, .table td { padding: var(--space-xs) var(--space-sm); font-size: var(--fs-xs); }
+  .invoiceCard { padding: var(--space-lg); }
+  .gstToggleBtn { padding: 8px; font-size: var(--fs-xs); }
 }

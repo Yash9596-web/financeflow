@@ -460,15 +460,48 @@
   .whyGrid { grid-template-columns: repeat(2, 1fr); }
 }
 
-@media (max-width: 640px) {
-  .hero { min-height: auto; padding: var(--space-2xl) 0; }
+@media (max-width: 768px) {
+  .hero { min-height: auto; padding: var(--space-2xl) 0 var(--space-xl); }
   .heroTitle { font-size: var(--fs-3xl); }
+  .heroSubtitle { font-size: var(--fs-base); padding: 0 var(--space-sm); }
+  .heroCTA { flex-direction: column; align-items: center; padding: 0 var(--space-md); }
+  .heroCTA > * { width: 100%; max-width: 320px; }
   .heroStats { gap: var(--space-md); }
   .heroStatDivider { display: none; }
+  .heroStatNum { font-size: var(--fs-xl); }
+  .heroBadge { font-size: var(--fs-xs); padding: var(--space-xs) var(--space-md); }
+
   .calcGrid { grid-template-columns: 1fr; }
-  .insightsGrid { grid-template-columns: 1fr; }
+  .calcCard { padding: var(--space-xl) var(--space-lg); }
+
+  .insightsGrid { grid-template-columns: repeat(2, 1fr); }
+  .insightValue { font-size: var(--fs-xl); }
+  
   .whyGrid { grid-template-columns: 1fr; }
+  
   .allCalcsGrid { grid-template-columns: 1fr; }
+  .allCalcCard { padding: var(--space-md); }
+  
   .blogGrid { grid-template-columns: 1fr; }
+  .blogCardTitle { font-size: var(--fs-base); }
+  
+  .newsletterCard { padding: var(--space-xl); }
   .newsletterForm { flex-direction: column; }
+  .newsletterContent h2 { font-size: var(--fs-xl); }
+  
+  .categoryFilter { gap: var(--space-xs); }
+  .filterBtn { padding: 0.4rem 0.875rem; font-size: var(--fs-xs); }
+}
+
+@media (max-width: 480px) {
+  .hero { padding: var(--space-xl) 0; }
+  .heroTitle { font-size: var(--fs-2xl); }
+  .heroSubtitle { font-size: var(--fs-sm); }
+  .heroOrb1 { width: 200px; height: 200px; }
+  .heroOrb2 { width: 150px; height: 150px; }
+  .heroOrb3 { width: 100px; height: 100px; }
+  
+  .insightsGrid { grid-template-columns: 1fr; }
+  .calcIcon { font-size: 2rem; }
+  .calcCardTitle { font-size: var(--fs-base); }
 }

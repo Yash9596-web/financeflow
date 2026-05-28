@@ -125,4 +125,19 @@
   .relatedGrid { grid-template-columns: 1fr; }
   .heroTitle { font-size: var(--fs-2xl); }
   .heroDesc { font-size: var(--fs-base); }
+  .heroIcon { font-size: 2.25rem; }
+  .hero { padding: var(--space-lg) 0 var(--space-md); }
+}
+
+@media (max-width: 480px) {
+  .page { padding-bottom: var(--space-xl); }
+  .heroTitle { font-size: var(--fs-xl); }
+  .heroDesc { font-size: var(--fs-sm); padding: 0 var(--space-xs); }
+  .heroIcon { font-size: 2rem; }
+  .breadcrumb { font-size: var(--fs-xs); padding: var(--space-sm) 0; }
+  .calcSection { padding: var(--space-md) 0 var(--space-lg); }
+  .relatedCard { padding: var(--space-md); }
+  .relatedIcon { font-size: 1.5rem; }
+  .relatedCard h3 { font-size: var(--fs-sm); }
+  .relatedCard p { font-size: 0.7rem; }
 }
