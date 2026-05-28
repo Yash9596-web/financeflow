@@ -42,10 +42,17 @@ export default function AIAdvisorClient() {
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const chatViewportRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+
+  // Set initial sidebar state based on screen size (client-side only)
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      setIsSidebarOpen(window.innerWidth > 860);
+    }
+  }, []);
 
   // Load conversations from localStorage on mount
   useEffect(() => {
@@ -278,6 +285,13 @@ export default function AIAdvisorClient() {
           <button onClick={startNewChat} className="new-chat-btn">
             <span>➕</span> New Chat
           </button>
+          <button 
+            className="mobile-close-btn" 
+            onClick={() => setIsSidebarOpen(false)}
+            aria-label="Close Sidebar"
+          >
+            ✕
+          </button>
         </div>
 
         <div className="sidebar-history-container">
@@ -505,10 +519,22 @@ export default function AIAdvisorClient() {
           padding: 1.25rem 1rem;
           display: flex;
           justify-content: center;
+          align-items: center;
+          gap: 10px;
+        }
+
+        .mobile-close-btn {
+          display: none;
+          background: none;
+          border: none;
+          color: var(--advisor-text-muted);
+          font-size: 1.25rem;
+          cursor: pointer;
+          padding: 4px;
         }
 
         .new-chat-btn {
-          width: 100%;
+          flex: 1;
           background: var(--advisor-card);
           border: 1px solid var(--advisor-border);
           padding: 0.75rem 1rem;
@@ -1144,8 +1170,12 @@ export default function AIAdvisorClient() {
             font-size: 0.6rem;
           }
 
+          .mobile-close-btn {
+            display: block;
+          }
+
           .advisor-sidebar.open {
-            width: 220px;
+            width: 250px;
           }
 
           .sidebar-footer {
