@@ -1132,14 +1132,35 @@ export default function AIAdvisorClient() {
             font-size: 0.72rem;
           }
 
+          .message-container {
+            gap: 1.25rem;
+          }
+
+          .message-row {
+            gap: 8px;
+          }
+
+          .advisor-avatar {
+            width: 28px;
+            height: 28px;
+            font-size: 0.85rem;
+          }
+
           .message-bubble {
             font-size: 0.85rem;
             line-height: 1.55;
+            overflow-wrap: break-word;
+            word-wrap: break-word;
           }
 
           .user-bubble {
-            max-width: 90%;
-            padding: 0.625rem 1rem;
+            max-width: 92%;
+            padding: 0.625rem 0.875rem;
+          }
+
+          .assistant-bubble {
+            max-width: calc(100% - 36px);
+            padding: 0;
           }
 
           .input-panel-container {
